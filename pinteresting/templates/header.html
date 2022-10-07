@@ -1,0 +1,20 @@
+<div class="pinteresting_header">
+    <div >
+        <h1 class="pinteresting_logo">Pinteresting</h1>
+    </div>
+    <div>
+        <span>nav1</span>
+        <span>nav2</span>
+        <span>nav3</span>
+        {% if not user.is_authenticated %}
+        <a href="{% url 'accountapp:login' %}?next={{request.path}}">
+            <span>login</span>
+        </a>
+        {% else %}
+        <a href="{% url 'accountapp:logout' %}?next={{request.path}}">
+            <span>logout</span>
+        </a>
+        {% endif %}
+    </div>
+
+</div>
