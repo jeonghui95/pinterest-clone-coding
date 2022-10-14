@@ -24,3 +24,10 @@
     margin:4rem auto;
 }
 
+@media screen and (max-width:500px){
+    html{
+        font-size:13px;
+    }
+
+
+}
