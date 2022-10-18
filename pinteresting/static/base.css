@@ -31,3 +31,16 @@
 
 
 }
+
+a {
+    color:black;
+}
+
+a:hover{
+    color:black;
+    text-decoration:none;
+}
+
+.pinteresting_header{
+    margin:1rem 0.5rem;
+}

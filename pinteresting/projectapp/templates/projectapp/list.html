@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<style>
+
+      .container {
+         padding:0;
+         margin:0 auto;
+      }
+
+
+    .container div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 1rem;
+    }
+
+   .container img{
+   width:7rem;
+   height:7rem;
+   object-fit:cover;
+   border-radius:1rem;
+
+   }
+</style>
+{% if project_list %}
+<div class="container">
+    {% for project in project_list %}
+        <a href="{% url 'projectapp:detail' pk=project.pk %}">
+            {% include 'snippets/project_card.html'  with article=project%}
+        </a>
+    {% endfor %}
+</div>
+<script src="{% static 'js/magicgrid.js' %}"></script>
+{% else %}
+<h4 style="text-align:center">
+    THERE'S NO IMAGE!!
+</h4>
+{% endif %}
+
+
+<div style="text-align:center; margin:1rem 0;">
+{% if page_obj.has_previous %}
+    <a href="?page={{page_obj.previous_page_number}}"
+    class="btn btn-secondary rounded-pill">
+        {{ page_obj.previous_page_number}}
+    </a>
+{% endif %}
+    <a href="?page={{page_obj.number}}"
+    class="btn btn-secondary rounded-pill">
+        {{ page_obj.number}}
+    </a>
+{% if page_obj.has_next %}
+    <a href="?page={{page_obj.next_page_number}}"
+    class="btn btn-secondary rounded-pill">
+        {{ page_obj.next_page_number}}
+    </a>
+{% endif %}
+</div>
+<div style="text-align:center;">
+<a href="{% url 'projectapp:create'%}" class="btn btn-primary rounded-pill col-3 mt-3" >create</a>
+</div>
+{% endblock %}
